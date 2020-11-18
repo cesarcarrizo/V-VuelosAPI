@@ -1,14 +1,17 @@
 import express from 'express';
-import apiRouter from './routes/apiRoutes';
-import db from './database';
+import usuarios from './routes/apiRoutes/usuarios';
+import consecutivos from './routes/apiRoutes/usuarios';
+import cors from 'cors';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-app.use('/api', apiRouter(db));
+app.use(cors());
 
-app.listen(PORT, () => {
+app.use('/api', usuarios);
+app.use('/api', consecutivos);
+
+app.listen(PORT,  () => {
     console.log('Success.');
-    // let test = await db('/t_usuarios/1/');
-    // console.dir(test);
+    //console.dir(test);
 });

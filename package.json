@@ -14,6 +14,8 @@
   "author": "Alejandro Acuna, Cesar Carrizo, Celeste Melendez",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "msnodesqlv8": "^2.0.7",
     "mssql": "^6.2.3",

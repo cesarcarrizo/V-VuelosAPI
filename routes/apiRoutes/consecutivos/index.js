@@ -3,13 +3,13 @@ import db from '../../../database';
 
 const router = express.Router();
 
-router.route('/t_usuarios')
+router.route('/t_consecutivos')
     .get(async (req, res) => {
-        let query = `select * from t_usuarios;`
+        let query = `select * from t_consecutivos;`
         res.json(await db(query));
     });
 
-router.route('/t_usuarios/:pk')
+router.route('/t_consecutivos/:pk')
     .get(async (req, res) => {
         let query = `select * from t_usuarios where cedula_usu_pk=${req.params.pk};`;
         res.json(await db(query));
