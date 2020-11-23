@@ -1,6 +1,6 @@
 {
   "name": "v-vuelosapi",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Modulo WEB API para los endpoints de V-Vuelos",
   "main": "index.js",
   "scripts": {
