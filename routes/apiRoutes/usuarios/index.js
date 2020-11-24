@@ -41,15 +41,15 @@ router
 router
   .route("/usuarios/:pk")
   .get(async (req, res) => {
-    let query = `select * from usuarios where cedula_usu_pk=${req.params.pk};`;
+    let query = `select * from usuarios where cedula_usu_pk='${req.params.pk}';`;
     res.json(await db(query));
   })
   .delete(async (req, res) => {
     try {
-      let query = `delete from usuarios where cedula_usu_pk=${req.params.pk};`;
+      let query = `delete from usuarios where cedula_usu_pk='${req.params.pk}';`;
       await db(query);
       res.json({
-        estatus: `Elemento eliminado satisfactoriamente, pk=${req.params.pk}`,
+        estatus: `Elemento eliminado satisfactoriamente, pk='${req.params.pk}'`,
       });
     } catch (err) {
       console.log(err);
