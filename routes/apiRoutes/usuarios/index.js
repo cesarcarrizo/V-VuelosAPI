@@ -4,8 +4,8 @@ import db from "../../../database";
 const router = express.Router();
 
 // ruta para actualizar el passwd
-router.route("/usuarios/cp/:oldPwd/:newPwd").get(async (req, res) => {
-  let query = `update usuarios set passwd_usu='${req.params.newPwd}' where passwd_usu='${req.params.oldPwd}';`;
+router.route("/usuarios/cp/:pk/:newPwd").get(async (req, res) => {
+  let query = `update usuarios set passwd_usu='${req.params.newPwd}' where cedula_usu_pk=${req.params.pk};`;
   await db(query);
   res.json({ estatus: "Password actualizado satisfactoriamente" });
 });
