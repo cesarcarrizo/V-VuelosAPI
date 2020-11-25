@@ -3,6 +3,19 @@ import db from "../../../database";
 
 const router = express.Router();
 
+// ruta para actualizar el passwd
+router.route("/usuarios/cp/:oldPwd/:newPwd").get(async (req, res) => {
+  let query = `update usuarios set passwd_usu='${req.params.newPwd}' where passwd_usu='${req.params.oldPwd}';`;
+  await db(query);
+  res.json({ estatus: "Password actualizado satisfactoriamente" });
+});
+
+router.route("/usuarios/:pk/:newRole").get(async (req, res) => {
+  let query = `update usuarios set rol_usu=${req.params.newRole} where cedula_usu_pk=${req.params.pk};`;
+  await db(query);
+  res.json({ estatus: "Rol actualizado satisfactoriamente" });
+});
+
 router
   .route("/usuarios")
   .get(async (req, res) => {
