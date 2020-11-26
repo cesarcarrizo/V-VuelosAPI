@@ -3,6 +3,11 @@ import db from "../../../database";
 
 const router = express.Router();
 
+router.route("/vuelos/descargas").get(async (req, res) => {
+  let query = "select * from vuelos where estatus_vlo=5;";
+  res.json(await db(query));
+});
+
 router
   .route("/vuelos")
   .get(async (req, res) => {
