@@ -14,10 +14,9 @@ router
       let data = JSON.parse(Object.keys(req.body)[0]);
 
       let query = `insert into consecutivos values(
-                ${data.pk},
                 '${data.tabla}',
                 '${data.primarykey}',
-                ${data.estatus},
+                ${data.estatus}
                 );`;
       await db(query);
 
