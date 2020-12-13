@@ -3,6 +3,22 @@ import db from "../../../database";
 
 const router = express.Router();
 
+router.route("/consecutivos/getNext/:table").get(async (req, res) => {
+  let query = `select top 1 valor_c 
+    from consecutivos 
+    where estatus_asignado_c=0 
+    and desc_c='${req.params.table}'
+    order by codigo_c_pk asc;`;
+
+  let consReturned = await db(query);
+
+  let query2 = `update consecutivos set estatus_asignado_c=1 where valor_c='${consReturned[0]["valor_c"]}';`;
+
+  await db(query2);
+
+  res.json(consReturned);
+});
+
 router
   .route("/consecutivos")
   .get(async (req, res) => {

@@ -3,6 +3,11 @@ import db from "../../../database";
 
 const router = express.Router();
 
+router.route("/puertas/upd/:pk/:status").get(async (req, res) => {
+  let query = `update puertas set estatus_pta=${req.params.status} where valor_pta_pk='${req.params.pk}';`;
+  res.json(await db(query));
+});
+
 router
   .route("/puertas")
   .get(async (req, res) => {

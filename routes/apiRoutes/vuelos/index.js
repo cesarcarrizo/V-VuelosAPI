@@ -3,6 +3,16 @@ import db from "../../../database";
 
 const router = express.Router();
 
+router.route("/vuelos/get/:nombrepais").get(async (req, res) => {
+  let query = `select valor_vlo_pk from vuelos where destino_vlo='${req.params.nombrepais}';`;
+  res.json(await db(query));
+});
+
+router.route("/vuelos/upd/:pk/:status").get(async (req, res) => {
+  let query = `update vuelos set estatus_vlo=${req.params.status} where valor_vlo_pk='${req.params.pk}';`;
+  res.json(await db(query));
+});
+
 router.route("/vuelos/descargas").get(async (req, res) => {
   let query = "select * from vuelos where estatus_vlo=5;";
   res.json(await db(query));
